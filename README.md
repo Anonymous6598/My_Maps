@@ -1,5 +1,5 @@
 # My_Maps
-Just maps, nothing else. If you like simplicity -- it's your choice 
+Just maps, nothing else. If you like simplicity -- it's your choice.
 
 ![Snimak ekrana 2024-07-09 103850](https://github.com/Anonymous6598/My_Maps/assets/121385046/dced3cf7-2663-45da-9fa4-268e048c4c47)
 
