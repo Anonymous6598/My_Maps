@@ -1,5 +1,5 @@
 # My_Maps
-Just maps, nothing else. If you like simplicity -- it's your choice. Now with search and AI assistant.
+Just maps, nothing else. If you like simplicity -- it's your choice. Now with search and Llama 3.1 Supernova Lite model assistant.
 
 Before:
 
