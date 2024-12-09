@@ -14,6 +14,7 @@ class Program(customtkinter.CTk, My_Maps_Interface.My_Maps_Interface):
         
         self.title(self.TITLE)
         self.iconbitmap(self.ICON)
+        self.protocol(f"WM_DELETE_WINDOW", lambda: subprocess.call(f"TASKKILL /F /IM Python.exe", shell=False) + sys.exit())
 
         self.main_screen_current_cordinates: tuple[float, float] = geocoder.ip(f"me")
         
