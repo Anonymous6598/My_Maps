@@ -1,5 +1,5 @@
 # My_Maps
-Just maps, nothing else. If you like simplicity -- it's your choice. Now with search and Llama 3.1 Supernova Lite model assistant.
+Just maps, nothing else. If you like simplicity -- it's your choice. Now with search and Open AI GPT-4o-mini model assistant.
 
 ## Windows
 ### Before:
@@ -8,9 +8,7 @@ Just maps, nothing else. If you like simplicity -- it's your choice. Now with se
 
 ### After:
 
-![Snimak ekrana 2024-09-16 192223](https://github.com/user-attachments/assets/db3caee0-ad7b-4868-8ca8-823a5ae71bf0)
-
-![Snimak ekrana 2024-09-16 192520](https://github.com/user-attachments/assets/e118476e-3693-472f-9813-e2223119085b)
+![Snimak ekrana 2025-03-15 215310](https://github.com/user-attachments/assets/85ab306a-d82f-4d67-8edd-983a46bb61e2)
 
 ## Linux
 
