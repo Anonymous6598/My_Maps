@@ -1,6 +1,6 @@
-import customtkinter, tkinter, typing, My_Maps_AI, asyncio, speech_recognition, My_Maps_AI_window_interface
+import customtkinter, tkinter, typing, My_Maps_AI, speech_recognition, My_Maps_AI_window_interface
 
-class AI_Window(customtkinter.CTk, My_Maps_AI_window_interface.My_Maps_AI_window_interface):
+class AI_Window(customtkinter.CTkToplevel, My_Maps_AI_window_interface.My_Maps_AI_window_interface):
 
 	TITLE: typing.Final[str] = f"My Maps AI assistant"
 	HEIGHT: typing.Final[int] = 375
@@ -8,12 +8,14 @@ class AI_Window(customtkinter.CTk, My_Maps_AI_window_interface.My_Maps_AI_window
 	ICON: typing.Final[str] = f"my maps icon.ico"
 	COLOR_THEME: typing.Final[str] = f"dark-blue"
 	WIDGET_SCALING: typing.Final[float] = 1.251
+	THEME: typing.Final[str] = f"system"
 
 	def __init__(self: typing.Self, *args, **kwargs) -> None:
-		customtkinter.CTk.__init__(self, *args, **kwargs)
+		customtkinter.CTkToplevel.__init__(self, *args, **kwargs)
 
 		customtkinter.set_widget_scaling(self.WIDGET_SCALING)
 		customtkinter.set_default_color_theme(self.COLOR_THEME)
+		customtkinter.set_appearance_mode(self.THEME)
 		customtkinter.deactivate_automatic_dpi_awareness()
 
 		self.title(self.TITLE)
@@ -41,9 +43,9 @@ class AI_Window(customtkinter.CTk, My_Maps_AI_window_interface.My_Maps_AI_window
 		self.ai_window_entry_data: str = self.ai_window_entry.get()
 
 		self.ai_window_textbox.configure(state=f"normal")
-		self.query: str = asyncio.run(My_Maps_AI.My_Maps_LM().__response__(self.ai_window_entry_data))
+		self.query: str = My_Maps_AI.My_Maps_LM().__response__(self.ai_window_entry_data)
 
-		self.ai_window_textbox.insert(tkinter.END, f"USER:\n{self.ai_window_entry_data}\nLlama:\n{self.query}\n", f"-1.0")
+		self.ai_window_textbox.insert(tkinter.END, f"USER:\n{self.ai_window_entry_data}\nGPT-4o-mini:\n{self.query}\n", f"-1.0")
 		self.ai_window_textbox.configure(state=f"disabled")
 		self.ai_window_entry.delete(f"-1", tkinter.END)
 
@@ -54,6 +56,3 @@ class AI_Window(customtkinter.CTk, My_Maps_AI_window_interface.My_Maps_AI_window
 			self.text: str = self.recognizer.recognize_google(self.audio_data)
 
 		self.ai_window_entry.insert(f"0", self.text)
-		
-if __name__ == f"__main__":
-	AI_Window().mainloop()
