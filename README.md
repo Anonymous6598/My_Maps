@@ -1,5 +1,5 @@
 # My_Maps
-Just maps, nothing else. If you like simplicity -- it's your choice. Now with search and Open AI GPT-4o-mini model assistant.
+Just maps, nothing else. If you like simplicity -- it's your choice. Now with search and Open AI GPT-4o model assistant.
 
 ## Windows
 ### Before:
