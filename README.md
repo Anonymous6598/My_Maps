@@ -2,13 +2,8 @@
 Just maps, nothing else. If you like simplicity -- it's your choice. Now with search and Open AI GPT-4o model assistant.
 
 ## Windows
-### Before:
 
-![Snimak ekrana 2024-07-09 103850](https://github.com/Anonymous6598/My_Maps/assets/121385046/dced3cf7-2663-45da-9fa4-268e048c4c47)
-
-### After:
-
-![Snimak ekrana 2025-03-15 215310](https://github.com/user-attachments/assets/85ab306a-d82f-4d67-8edd-983a46bb61e2)
+![Snimak ekrana 2025-04-01 010134](https://github.com/user-attachments/assets/ccd8115a-71f0-4438-8f59-2b203d0aa6d4)
 
 ## Linux
 
