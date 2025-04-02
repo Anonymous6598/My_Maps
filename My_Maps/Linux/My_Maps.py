@@ -17,17 +17,17 @@ class Program(customtkinter.CTk):
         self.title(self.TITLE)
 
         self.main_screen_current_cordinates: tuple[float, float] = geocoder.ip(f"me")
-        
-        self.main_screen_map: tkintermapview.TkinterMapView = tkintermapview.TkinterMapView(master=self, corner_radius=0)
-        self.main_screen_map.pack(fill=f"both", expand=True)
-        
-        self.main_screen_map.set_position(self.main_screen_current_cordinates.latlng[0], self.main_screen_current_cordinates.latlng[1])
 
         self.main_screen_menu: CTkMenuBar.CTkMenuBar = CTkMenuBar.CTkMenuBar(self)
 
         self.main_screen_menu_ai_button: customtkinter.CTkButton = self.main_screen_menu.add_cascade(text=f"AI", command=lambda: My_Maps_AI_window.AI_Window())
 
         self.main_screen_menu_settings_button: customtkinter.CTkButton = self.main_screen_menu.add_cascade(text=f"⚙️", command=lambda: My_Maps_settings.My_Maps_setting_window())
+        
+        self.main_screen_map: tkintermapview.TkinterMapView = tkintermapview.TkinterMapView(master=self, corner_radius=0)
+        self.main_screen_map.pack(fill=f"both", expand=True)
+        
+        self.main_screen_map.set_position(self.main_screen_current_cordinates.latlng[0], self.main_screen_current_cordinates.latlng[1])
         
 if __name__ == f"__main__":
     program: Program = Program().mainloop()
