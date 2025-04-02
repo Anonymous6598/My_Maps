@@ -7,9 +7,7 @@ Just maps, nothing else. If you like simplicity -- it's your choice. Now with se
 
 ## Linux
 
-![Снимак екрана од 2025-01-04 23-27-12](https://github.com/user-attachments/assets/702c8e3a-7ba8-4102-ad36-4eb9f9d43f2a)
-
-![Снимак екрана од 2025-01-04 23-27-44](https://github.com/user-attachments/assets/ebaa6193-2705-4274-9e5e-735784727574)
+![Снимак екрана од 2025-04-02 09-59-10](https://github.com/user-attachments/assets/6c5d0b88-0bb1-4e8e-b8a0-4de2347b684d)
 
 (everthing is in serbian)
 
