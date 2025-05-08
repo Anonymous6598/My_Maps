@@ -1,5 +1,5 @@
 # My_Maps
-Just maps, nothing else. If you like simplicity -- it's your choice. Now with search and Open AI GPT-4o model assistant.
+Just maps, nothing else. If you like simplicity -- it's your choice. Now with search and Open AI GPT-4o (Phi3) model assistant. And now it supports Copilot+PC laptops.
 
 ## Windows
 
@@ -8,6 +8,19 @@ Just maps, nothing else. If you like simplicity -- it's your choice. Now with se
 ## Linux
 
 ![Снимак екрана од 2025-04-02 09-59-10](https://github.com/user-attachments/assets/6c5d0b88-0bb1-4e8e-b8a0-4de2347b684d)
+
+## Copilot+PC
+
+![Snimak ekrana 2025-05-08 142919](https://github.com/user-attachments/assets/9582cd06-1e70-4ffa-9918-85041556e186)
+
+> [!Warning]
+> Copilot+PC version only supports Intel Core Ultra processors
+>
+> Support for AMD and Qualcomm will be soon added
+>
+> Specs for laptop to run app:
+> - Intel Core Ultra proccesors
+> - 24 gb of ram (32 gb is recommended)
 
 (everthing is in serbian)
 
