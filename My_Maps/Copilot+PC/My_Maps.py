@@ -1,34 +1,34 @@
-import customtkinter, tkintermapview, typing, geocoder, CTkMenuBar, warnings, tkinter, speech_recognition, My_Maps_AI, My_Maps_AI_window_interface
+import customtkinter, tkintermapview, typing, geocoder, CTkMenuBar, warnings, tkinter, speech_recognition, My_Maps_AI, My_Maps_AI_window_interface, threading
 
 warnings.filterwarnings(f"ignore")
 
 SLM: My_Maps_AI. My_Maps_LM = My_Maps_AI. My_Maps_LM().__initialize_model__()
 
 class Program(customtkinter.CTk):
-    
-    TITLE: typing.Final[str] = f"My Maps (Copliot+PC edition)"
-    ICON: typing.Final[str] = f"my maps icon.ico"
-    WIDGET_SCALING: typing.Final[int] = 1.251
-    
-    def __init__(self: typing.Self, *args: typing.Any, **kwargs: typing.Any) -> None:
-        customtkinter.CTk.__init__(self, *args, **kwargs)
-        
-        customtkinter.deactivate_automatic_dpi_awareness()
-        customtkinter.set_widget_scaling(self.WIDGET_SCALING)
-        
-        self.title(self.TITLE)
-        self.iconbitmap(self.ICON)
+	
+	TITLE: typing.Final[str] = f"My Maps (Copliot+PC edition)"
+	ICON: typing.Final[str] = f"my maps icon.ico"
+	WIDGET_SCALING: typing.Final[int] = 1.251
+	
+	def __init__(self: typing.Self, *args: typing.Any, **kwargs: typing.Any) -> None:
+		customtkinter.CTk.__init__(self, *args, **kwargs)
+		
+		customtkinter.deactivate_automatic_dpi_awareness()
+		customtkinter.set_widget_scaling(self.WIDGET_SCALING)
+		
+		self.title(self.TITLE)
+		self.iconbitmap(self.ICON)
 
-        self.main_screen_current_cordinates: tuple[float, float] = geocoder.ip(f"me")
-        
-        self.main_screen_map: tkintermapview.TkinterMapView = tkintermapview.TkinterMapView(master=self, corner_radius=0)
-        self.main_screen_map.pack(fill=f"both", expand=True)
-        
-        self.main_screen_map.set_position(self.main_screen_current_cordinates.latlng[0], self.main_screen_current_cordinates.latlng[1])
+		self.main_screen_current_cordinates: tuple[float, float] = geocoder.ip(f"me")
+		
+		self.main_screen_map: tkintermapview.TkinterMapView = tkintermapview.TkinterMapView(master=self, corner_radius=0)
+		self.main_screen_map.pack(fill=f"both", expand=True)
+		
+		self.main_screen_map.set_position(self.main_screen_current_cordinates.latlng[0], self.main_screen_current_cordinates.latlng[1])
 
-        self.main_screen_menu: CTkMenuBar.CTkTitleMenu = CTkMenuBar.CTkTitleMenu(self)
+		self.main_screen_menu: CTkMenuBar.CTkTitleMenu = CTkMenuBar.CTkTitleMenu(self)
 
-        self.main_screen_menu_ai_button: customtkinter.CTkButton = self.main_screen_menu.add_cascade(text=f"AI", command=lambda: AI_Window())
+		self.main_screen_menu_ai_button: customtkinter.CTkButton = self.main_screen_menu.add_cascade(text=f"AI", command=lambda: AI_Window())
 
 class AI_Window(customtkinter.CTkToplevel, My_Maps_AI_window_interface.My_Maps_AI_window_interface):
 
@@ -69,15 +69,21 @@ class AI_Window(customtkinter.CTkToplevel, My_Maps_AI_window_interface.My_Maps_A
 
 		self.ai_window_entry.bind(f"<Return>", self.__response__)
 
-	def __response__(self: typing.Self, configure: str | None = None) -> None:
+	def __response__(self: typing.Self, event: str | None = None) -> None:
 		self.ai_window_entry_data: str = self.ai_window_entry.get()
 
-		self.ai_window_textbox.configure(state=f"normal")
-		self.query: str = My_Maps_AI.My_Maps_LM().__response__(pipe=SLM, prompt=self.ai_window_entry_data)
+		def run_model():
+			response_text: str = My_Maps_AI.My_Maps_LM().__response__(pipe=SLM, query=f"<|system|>You are a helpful AI assistant.<|end|><|user|>{self.ai_window_entry_data}<|end|><|assistant|>")
 
-		self.ai_window_textbox.insert(tkinter.END, f"USER:\n{self.ai_window_entry_data}\nPhi3:\n{self.query}\n", f"-1.0")
-		self.ai_window_textbox.configure(state=f"disabled")
-		self.ai_window_entry.delete(f"-1", tkinter.END)
+			def update_gui():
+				self.ai_window_textbox.configure(state="normal")
+				self.ai_window_textbox.insert(tkinter.END, f"USER:\n{self.ai_window_entry_data}\nLlama:\n{response_text}\n")
+				self.ai_window_textbox.configure(state="disabled")
+				self.ai_window_entry.delete(0, tkinter.END)
+
+			self.after(0, update_gui)
+
+		threading.Thread(target=run_model).start()
 
 	def __audio_input__(self: typing.Self) -> None:
 		self.recognizer: speech_recognition.Recognizer = speech_recognition.Recognizer()
@@ -88,4 +94,4 @@ class AI_Window(customtkinter.CTkToplevel, My_Maps_AI_window_interface.My_Maps_A
 		self.ai_window_entry.insert(f"0", self.text)
 
 if __name__ == f"__main__":
-    program: Program = Program().mainloop()
+	program: Program = Program().mainloop()
