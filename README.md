@@ -1,5 +1,5 @@
 # My_Maps
-Just maps, nothing else. If you like simplicity -- it's your choice. Now with search and Open AI GPT-4o (Phi3) model assistant. And now it supports Copilot+PC laptops.
+Just maps, nothing else. If you like simplicity -- it's your choice. Now with search and Open AI GPT-4o (Llama3.2) model assistant. And now it supports Copilot+PC laptops.
 
 ## Windows
 
