@@ -20,7 +20,7 @@ Just maps, nothing else. If you like simplicity -- it's your choice. Now with se
 >
 > Specs for laptop to run app:
 > - Intel Core Ultra proccesors
-> - 8 gb of ram (16 gb is recommended)
+> - 2 gb of ram (4 gb is recommended)
 
 (everthing is in serbian)
 
