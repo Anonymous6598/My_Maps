@@ -1,8 +1,8 @@
-import customtkinter, tkintermapview, typing, geocoder, CTkMenuBar, My_Maps_AI_window, pickle, My_Maps_settings, ctypes
+import customtkinter, tkintermapview, typing, geocoder, CTkMenuBar, My_Maps_AI_window, pickle, My_Maps_settings, ctypes, My_Maps_interface
 
 with open(f"my_maps_theme_settings.pickle", f"rb+") as theme_data: theme: str = pickle.load(theme_data)
 
-class Program(customtkinter.CTk):
+class Program(customtkinter.CTk, My_Maps_interface.My_Maps_interface):
     
     TITLE: typing.Final[str] = f"My Maps  "
     WIDGET_SCALING: typing.Final[int] = 1.251
@@ -30,6 +30,7 @@ class Program(customtkinter.CTk):
         
         self.main_screen_map.set_position(self.main_screen_current_cordinates.latlng[0], self.main_screen_current_cordinates.latlng[1])
 
+    @typing.override
     def __fullscreen__(self: typing.Self) -> None:
         if self.attributes(f"-fullscreen"): self.attributes(f"-fullscreen", False)
         
