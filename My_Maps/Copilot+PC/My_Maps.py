@@ -1,4 +1,4 @@
-import customtkinter, tkintermapview, typing, geocoder, CTkMenuBar, warnings, tkinter, speech_recognition, My_Maps_AI, My_Maps_AI_window_interface, threading
+import customtkinter, tkintermapview, typing, geocoder, CTkMenuBar, warnings, tkinter, speech_recognition, My_Maps_AI, My_Maps_AI_window_interface, threading, ctk_markdown
 
 warnings.filterwarnings(f"ignore")
 
@@ -53,7 +53,7 @@ class AI_Window(customtkinter.CTkToplevel, My_Maps_AI_window_interface.My_Maps_A
 		self.resizable(False, False)
 		self.after(250, lambda: self.iconbitmap(self.ICON))
 
-		self.ai_window_textbox: customtkinter.CTkTextbox = customtkinter.CTkTextbox(master=self, height=265, width=524, corner_radius=0, fg_color=f"transparent", text_color=(f"black", f"white"))
+		self.ai_window_textbox: ctk_markdown.CTkMarkdown = ctk_markdown.CTkMarkdown(master=self, height=265, width=524, corner_radius=0, fg_color=f"transparent", text_color=(f"black", f"white"))
 		self.ai_window_textbox.place(x=0, y=0)
 
 		self.ai_window_textbox.configure(state=f"disabled")
@@ -79,6 +79,7 @@ class AI_Window(customtkinter.CTkToplevel, My_Maps_AI_window_interface.My_Maps_A
 			def update_gui():
 				self.ai_window_textbox.configure(state="normal")
 				self.ai_window_textbox.insert(tkinter.END, f"USER:\n{self.ai_window_entry_data}\nLlama:\n{response_text}\n")
+				self.ai_window_textbox.set_markdown(self.ai_window_textbox.get(f"1.0", tkinter.END))
 				self.ai_window_textbox.configure(state="disabled")
 				self.ai_window_entry.delete(0, tkinter.END)
 
